@@ -153,5 +153,46 @@ void Salarios::on_actionAcerca_de_triggered()
     // Luego de cerrar la ventana, se acceden a los datos de la misma
     qDebug() << dialog->valor();
 
+}        
+
+
+void Salarios::on_actionAbrir_triggered()
+{
+
+    // Crear un objeto QFile
+
+    if(m_porGuardar){
+        int respuesta = QMessageBox::warning(
+                    this,"Abrir",
+                    "¿Desea Guardar el archivo existente?","Aceptar","cancelar");
+        if (respuesta == QMessageBox::AcceptRole){
+           on_actionGuardar_triggered();
+        }
+    }
+    // Abrir cuadro de diálogo para seleccionar ubicación y nombre del archivo.
+    QString nombreArchivo = QFileDialog::getOpenFileName(this,
+                                                         "Abrir archivo",
+                                                         QDir::home().absolutePath(),
+                                                         "Archivos de salarios (*.txt)");
+    QFile archivo(nombreArchivo);
+    if(archivo.open(QFile::ReadOnly)){
+        // Crear un 'stream' de texto
+        QTextStream entrada(&archivo);
+        // Leer todo el contenido del archivo
+        QString datos = entrada.readAll();
+        // Cargar el contenido al área de texto
+        ui->outCalculos->clear();
+        ui->outCalculos->setPlainText(datos);
+        // Mostrar 5 segundo que todo fue bien
+        ui->statusbar->showMessage("Datos leidos desde " + nombreArchivo, 5000);
+    }else{
+        // Mensaje de error si no se puede abrir el archivo
+        QMessageBox::warning(this,
+                             "Abrir datos",
+                             "No se pudo abrir el archivo");
+    }
+    // Abrirlo para lectura
+    // Cerrar el archivo
+    archivo.close();
 }
 

@@ -19,8 +19,12 @@
   <property name="windowTitle">
    <string>Salarios</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="Icon.qrc">
+    <normaloff>:/new/prefix1/S.png</normaloff>:/new/prefix1/S.png</iconset>
+  </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 243, 196);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -133,6 +137,9 @@ border-radius:10px;</string>
        </item>
        <item>
         <widget class="QPushButton" name="btnCalcular">
+         <property name="toolTip">
+          <string>Calcular salario</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
@@ -249,6 +256,10 @@ background-color: rgb(255, 255, 255);
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNuevo">
+   <property name="icon">
+    <iconset resource="Icon.qrc">
+     <normaloff>:/new/prefix1/open.png</normaloff>:/new/prefix1/open.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Nuevo</string>
    </property>
@@ -257,6 +268,10 @@ background-color: rgb(255, 255, 255);
    </property>
   </action>
   <action name="actionAbrir">
+   <property name="icon">
+    <iconset resource="Icon.qrc">
+     <normaloff>:/new/prefix1/save.png</normaloff>:/new/prefix1/save.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Abrir</string>
    </property>
@@ -265,6 +280,10 @@ background-color: rgb(255, 255, 255);
    </property>
   </action>
   <action name="actionGuardar">
+   <property name="icon">
+    <iconset resource="Icon.qrc">
+     <normaloff>:/new/prefix1/Saves.png</normaloff>:/new/prefix1/Saves.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Guardar</string>
    </property>
@@ -294,6 +313,8 @@ background-color: rgb(255, 255, 255);
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icon.qrc"/>
+ </resources>
  <connections/>
 </ui>
